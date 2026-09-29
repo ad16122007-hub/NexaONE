@@ -1,11 +1,15 @@
 require("dotenv").config();
 const express = require("express");
+const connectDB = require("./config/db");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Database connection call kiya
+connectDB();
+
 app.use(express.json());
 
-// Naye routes ko yahan import aur use kiya hai
 const apiRoutes = require("./routes/auth");
 app.use("/api", apiRoutes);
 
